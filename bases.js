@@ -52,20 +52,20 @@ for (var i = 2; i <= 10; i++) {
 // Node's native hex is 0-9 followed by *lowercase* a-f, so we'll take that
 // approach for everything from base-11 to base-16:
 for (var i = 11; i <= 16; i++) {
-    bases.KNOWN_ALPHABETS[i] = bases.NUMERALS + bases.LETTERS_LOWERCASE.substr(0, i - 10);
+    bases.KNOWN_ALPHABETS[i] = bases.NUMERALS + bases.LETTERS_UPPERCASE.substr(0, i - 10);
 }
 
 // We also model base-36 off of that, just using the full letter alphabet:
-bases.KNOWN_ALPHABETS[36] = bases.NUMERALS + bases.LETTERS_LOWERCASE;
+bases.KNOWN_ALPHABETS[36] = bases.NUMERALS + bases.LETTERS_UPPERCASE;
 
 // And base-62 will be the uppercase letters added:
-bases.KNOWN_ALPHABETS[62] = bases.NUMERALS + bases.LETTERS_LOWERCASE + bases.LETTERS_UPPERCASE;
+bases.KNOWN_ALPHABETS[62] = bases.NUMERALS + bases.LETTERS_UPPERCASE + bases.LETTERS_LOWERCASE;
 
 // For base-26, we'll assume the user wants just the letter alphabet:
-bases.KNOWN_ALPHABETS[26] = bases.LETTERS_LOWERCASE;
+bases.KNOWN_ALPHABETS[26] = bases.LETTERS_UPPERCASE;
 
 // We'll also add a similar base-52, just letters, lowercase then uppercase:
-bases.KNOWN_ALPHABETS[52] = bases.LETTERS_LOWERCASE + bases.LETTERS_UPPERCASE;
+bases.KNOWN_ALPHABETS[52] = bases.LETTERS_UPPERCASE + bases.LETTERS_LOWERCASE;
 
 // Base-64 is a formally-specified alphabet that has a particular order:
 // http://en.wikipedia.org/wiki/Base64 (and Node.js follows this too)
@@ -84,7 +84,7 @@ bases.KNOWN_ALPHABETS[58] = bases.KNOWN_ALPHABETS[62].replace(/[0OlI]/g, '');
 // And Douglas Crockford shared a similar base-32 from base-36:
 // http://www.crockford.com/wrmg/base32.html
 // Unlike our base-36, he explicitly specifies uppercase letters
-bases.KNOWN_ALPHABETS[32] = bases.NUMERALS + bases.LETTERS_UPPERCASE.replace(/[ILOU]/g, '');
+bases.KNOWN_ALPHABETS[32] = bases.NUMERALS + bases.LETTERS_LOWERCASE.replace(/[ILOU]/g, '');
 
 // Closure helper for convenience aliases like bases.toBase36():
 function makeAlias (base, alphabet) {
